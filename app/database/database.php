@@ -1,13 +1,14 @@
 <?php
 namespace yahya\Database;
 use PDO;
+use PDOException;
 
 
 class Database{
 
     private $host = HOST;
     private $username = USER_NAME;
-    private $password = PASSWORD;
+    private $pi = PASSWORD;
     private $dbname = DATABASE_NAME;
 
     const NO_MATCHE_VALUE = "no matches value";
@@ -20,8 +21,9 @@ class Database{
     public function __construct(){
         $dsn = 'mysql:host=' . $this->host . '; dbname=' . $this->dbname;
         try {
-            $this->pdo = new PDO($dsn, $this->username , $this->password);
+            $this->pdo = new PDO($dsn, $this->username , $this->pi);
         } catch (PDOException $e) {
+            echo $e->getMessage();
             die('there is an issue: ' . $e->getMessage());
         }
     }
@@ -36,6 +38,7 @@ class Database{
     }
 
     public function query($sql){
+        var_dump($this->pdo);
         $this->stmt = $this->pdo->prepare($sql);
     }
 
@@ -62,7 +65,7 @@ class Database{
                 
                 default:
                 $type = pdo::PARAM_STR;
-                    break;
+                break;
             }
         }
 
@@ -73,21 +76,21 @@ class Database{
         return $this->rowsNum = $this->stmt->rowCount();
     }
 
-    public function findOne($tableName, $columnName, $id, $value){
-        $sql = "SELECT * FROM $tableName WHERE $columnName = $id";
+    // public function findOne($tableName, $columnName, $id, $value){
+    //     $sql = "SELECT * FROM $tableName WHERE $columnName = $id";
 
-        $this->query($sql);
+    //     $this->query($sql);
 
-        $this->bind($id, $value);
-        $this->execute();
-        $this->rowcount();
+    //     $this->bind($id, $value);
+    //     $this->execute();
+    //     $this->rowcount();
 
-        if ($this->rowsNum == 0) {
-            return $this->result = self::NO_MATCHE_VALUE;
-        }
-        else{
-            $this->get();
-        }
-    }
+    //     if ($this->rowsNum == 0) {
+    //         return $this->result = self::NO_MATCHE_VALUE;
+    //     }
+    //     else{
+    //         $this->get();
+    //     }
+    // }
 }
 ?>

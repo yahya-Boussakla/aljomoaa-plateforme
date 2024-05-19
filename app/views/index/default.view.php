@@ -5,14 +5,13 @@
     <title>الجمعة</title>
     <link rel="stylesheet" href="assets/css/styl.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
     <script src="https://kit.fontawesome.com/6e2f9a7b88.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <div id="authent">
-            <a class="login" href="">ابدأ هنا</a>
-            <a href="" class="signup">تسجيل الدخول</a>
+    <header class="relative">
+        <div id="authent" class="absolute flex flex-row justify-center items-center top-5 mr-1 z-10 w-2/12 h-4-12 right-0 font-semibold gap-x-5 text-white">
+            <a class="login text-center no-underline rounded-md w-4/12" href="">ابدأ هنا</a>
+            <a href="" class="text-center no-underline rounded-md w-5/12 ">تسجيل الدخول</a>
         </div>
         <img src="assets/imgs/bg-.png" alt="" class="bg" />
         <h1>الجمعة</h1>
@@ -23,7 +22,7 @@
     <nav id="navBar">
         <li>
             <i class="fa-solid fa-house"></i>
-            الرثيسية
+            الرئيسية
         </li>
         <li>
             <i class="fa-solid fa-address-card"></i>
@@ -41,46 +40,59 @@
             ابحث
         </li>
     </nav>
-    <nav id="links">
-        <span class="rounded-pill">الرثيسية</span>
-        <p class="m-0 p-0">></p>
+    <nav id="links" class="flex flex-row justify-between">
+        <div calss="flex flex-row w-auto justify-center gap-3 items-center">
+            <span class="px-4 py-1.5 rounded-lg">الرئيسية</span>
+            <p class="px-2 py-2">></p>
+        </div>
+        <button class="rounded px-4 py-2 text-white">
+        أكتب مقالتك
+        <i class="fa-solid fa-plus"></i>
+        </button>
     </nav>
     <main class="overflow-auto">
-        <aside>
-            <div>
-                <img src="imgs/الجمعة-modified.png" alt="" />
-                <h1>AL JOMOAA</h1>
+        <aside class="flex flex-col justify-center items-center aside">
+            <div class="flex flex-row gap-2 justify-center w-11/12">
+                <img src="assets/imgs/الجمعة-modified.png" alt="" />
+                <h1>الجمعة</h1>
             </div>
-            <li>في السياسة</li>
-            <li>في الصحة</li>
-            <li>في التاريخ</li>
-            <li>في الحياة</li>
-            <li>في الاقتصاد</li>
+            <li class="w-11/12">في السياسة</li>
+            <li class="w-11/12">في الصحة</li>
+            <li class="w-11/12">في التاريخ</li>
+            <li class="w-11/12">في الحياة</li>
+            <li class="w-11/12">في الاقتصاد</li>
         </aside>
         <article>
-            <div class="blog">
-                <div class="flex flex-row justify-center">
-                    <div>في الصحة</div>
-                    <div class="flex flex-row justify-center">
-                        <img src="" alt="">
+            <div class="blog flex flex-col gap-4">
+                <div class="flex flex-row justify-between w-11/12 items-center">
+                    <div class="caregory">في الصحة</div>
+                    <div class="flex flex-row justify-center items-center gap-1.5">
                         <span>سعيد الكملي</span>
+                        <img src="assets/imgs/kamli.jpg" class="rounded-full w-9 h-9" alt="">
                     </div>
                 </div>
                 <hr>
-                <section>
-                    <div class="flex flex-row justify-center">
+                <section class="flex flex-col gap-4">
+                    <div class="flex flex-row justify-between w-full items-baseline">
                         <h1>التبرع بالدم</h1>
                         <span>منذ 2 ساعات</span>
                     </div>
-                    <p>
-                    موضوع حول التبرع بالدم هو موضوع مهم يجب أن يتم تسليط الضوء عليه  فيمجتمعاتنا العربية. فالتبرع بالدم هو عمل إنساني يساهم في إنقاذ  حياةالآخرين، ويعتبر من أعظم الأعمال الخيرية التي يمكن للإنسان أن  يقومبها. التبرع بالدم هو عملية يقوم بها الأشخاص بتقديم كمية من الدمالخاص  بهم للمستشفيات أو المراكز الطبية ليتم إستخدامها في  الذين  يحتاجون لنقل الدم. ويمكن للدم الذي يتم التبرع به أنينقذ حياة الكثير من  الأشخاص الذين يعانون من فقر الدم أو الأمراضالمزمنة أو الحوادث الطارئة.  في....
+                    <p class="w-full">
+                    موضوع حو التبرع بالدم هو موضوع مهم يجب أن يتم تسليط الضوء عليه  فيمجتمعاتنا العربية. فالتبرع بالدم هو عمل إنساني يساهم في إنقاذ  حياةالآخرين، ويعتبر من أعظم الأعمال الخيرية التي يمكن للإنسان أن  يقومبها. التبرع بالدم هو عملية يقوم بها الأشخاص بتقديم كمية من الدمالخاص  بهم للمستشفيات أو المراكز الطبية ليتم إستخدامها في  الذين  يحتاجون لنقل الدم. ويمكن للدم الذي يتم التبرع به أنينقذ حياة الكثير من  الأشخاص الذين يعانون من فقر الدم أو الأمراضالمزمنة أو الحوادث الطارئة.  في....
                     </p>
-                    <div class="flex flex-row justify-center">
-                        <div class="flex flex-row justify-center">
-                        <i class="fa-solid fa-bookmark"></i>
-                        <div></div>
+                    <div class="flex flex-row justify-between w-full items-center">
+                        <div class="flex flex-row justify-between items-center w-1/3">
+                        <i class="fa-regular fa-bookmark"></i>
+                        <div class="flex flex-row justify-between items-center w-auto gap-1">
+                            <p>12k.2</p>
+                            <i class="fa-regular fa-heart"></i>
                         </div>
-                        <button>اقرأ المزيد</button>
+                        <div class="flex flex-row justify-between items-center w-auto gap-1">
+                            <p>2000</p>
+                            <i class="fa-regular fa-comment"></i>
+                        </div>
+                        </div>
+                        <button class="rounded-tr-2xl rounded-bl-2xl px-6 py-1.5">اقرأ المزيد</button>
                     </div>
                 </section>
             </div>

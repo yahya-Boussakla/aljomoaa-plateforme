@@ -11,7 +11,7 @@ define('VIEWS_PATH', APP_PATH . "/views/");
 
 define('HOST', 'localhost');
 define('USER_NAME', 'root');
-define('DATABASE_NAME', 'bp14');
+define('DATABASE_NAME', 'fil_rouge');
 define('PASSWORD', '');
 
 ?>

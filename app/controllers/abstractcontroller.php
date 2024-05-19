@@ -5,8 +5,9 @@ class AbstractController {
     protected $_controller;
     protected $_action;
     protected $_params;
-    protected $model;
+    public $model;
     protected $_errors = false;
+
 
     public function notFoundAction(){
         $this->_view();
