@@ -8,6 +8,7 @@ class AuthentController extends AbstractController{
     }
     public function loginAction(){
         $this->_view();
+        $this->model->login();
         
     }
     public function signupAction(){

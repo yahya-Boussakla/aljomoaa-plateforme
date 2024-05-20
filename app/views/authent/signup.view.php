@@ -14,11 +14,11 @@
     
   </nav>
   <section>
-  <i class="fa-solid fa-arrow-left"></i>
+  <i class="fa-solid fa-arrow-left" onclick="history.back()"></i>
       <form method="post" action="" enctype = multipart/form-data>
               <div class="title">
                   <h1>انشاء حساب</h1>
-                  <h3>لديك حساب بالفعل؟  <a href="login.php"> تسحيل الدخول</a></h3>
+                  <h3>لديك حساب بالفعل؟<a href="http://localhost/jomoaa/authent/login"> تسحيل الدخول</a></h3>
               </div>
               <hr>
               <div class="section flex flex-col justify-center items-center">
@@ -41,9 +41,9 @@
                       </div>
                   </div>
                   <input type="submit" value="تسجيل الدخول" name="signup">
-                  <p class="error">  
-                  
-                   </p>
+                <p class="error">  
+                
+                </p>
                 <!-- </div>
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded   relative w-3/4 right-1/4" role="alert">
                 <strong class="font-bold">Holy smokes!</strong>

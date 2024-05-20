@@ -38,7 +38,6 @@ class Database{
     }
 
     public function query($sql){
-        var_dump($this->pdo);
         $this->stmt = $this->pdo->prepare($sql);
     }
 
@@ -76,21 +75,6 @@ class Database{
         return $this->rowsNum = $this->stmt->rowCount();
     }
 
-    // public function findOne($tableName, $columnName, $id, $value){
-    //     $sql = "SELECT * FROM $tableName WHERE $columnName = $id";
-
-    //     $this->query($sql);
-
-    //     $this->bind($id, $value);
-    //     $this->execute();
-    //     $this->rowcount();
-
-    //     if ($this->rowsNum == 0) {
-    //         return $this->result = self::NO_MATCHE_VALUE;
-    //     }
-    //     else{
-    //         $this->get();
-    //     }
-    // }
+  
 }
 ?>

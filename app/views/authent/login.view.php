@@ -16,13 +16,13 @@
     
   </nav>
   <section>
-  <i class="fa-solid fa-arrow-left"></i>
-    <form action="">
+  <i class="fa-solid fa-arrow-left" onclick="history.back()"></i>
+    <form action="" method='post'>
       <h1>تسجيل الدخول</h1>
-      <input type="text" placeholder="اسم المستخدم"><br>
-      <input type="text" placeholder="كلمة السر"><br>
-      <input type="submit" value="تسجيل الدخول">
-      <p>   ليس لديك حساب ؟<a href=""> انشاء حساب</a></p>
+      <input type="text" name="EMAIL" placeholder="اسم المستخدم" require><br>
+      <input type="password" name="PASSWORD" placeholder="كلمة السر" require><br>
+      <input type="submit" name="login" value="تسجيل الدخول">
+      <p>   ليس لديك حساب ؟<a href="http://localhost/jomoaa/authent/signup"> انشاء حساب</a></p>
     </form>
   </section>
 </body>
