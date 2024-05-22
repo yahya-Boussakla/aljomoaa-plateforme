@@ -10,6 +10,7 @@
 <body>
     <?php
     include APP_PATH ."/views/includes/header.php";
+    session_start();
     ?>
     <main class="overflow-auto">
         <aside class="flex flex-col justify-center items-center aside">
@@ -63,5 +64,6 @@
         <a href="/login/login.html">admin</a>
     </footer>        
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

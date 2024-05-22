@@ -35,17 +35,24 @@ class User extends \yahya\Database\Database{
         $this->idUser = $idUser;
         $this->pass = $pass;
         $this->profileImg = $profileImg;
+        
     }
 
     public function login(){
         if (isset($_POST['login'])) {
             
-            $this->email = $_POST['EMAIL'];
+            
+            
             if (is_array($this->checkUser())) {
                 if ($_POST['PASSWORD'] == $this->checkUser()['PASSWORD']) {
-                    $this->setDataUser( $this->checkUser()['NOM'],$this->checkUser()['PRENOM'],$this->checkUser()['EMAIL'],$this->checkUser()['ID_USER'],$this->checkUser()['PASSWORD'],$this->checkUser()['IMG']);
+
+                    $dataUser = $this->setDataUser( $this->checkUser()['NOM'],$this->checkUser()['PRENOM'],$_POST['EMAIL'],$this->checkUser()['ID_USER'],$this->checkUser()['PASSWORD'],$this->checkUser()['IMG']);
+
+                    echo $this->checkUser()['NOM'];
                     $_SESSION['USER'] = $this->idUser;
                     header("Location: http://localhost/jomoaa");
+                    return $dataUser;
+                    
                 }
             }
         }
@@ -54,9 +61,11 @@ class User extends \yahya\Database\Database{
     public function checkUser(){
         $sql = "select * FROM user WHERE EMAIL = :email;";
         $this->query($sql);
-        $this->bind(":email" , $this->email);
+        $this->bind(":email" , $_POST['EMAIL']);
         $this->execute();
         $this->rowcount();
+        echo $this->email;
+        echo "hh";
         $result = $this->get();
         
         if ($this->rowsNum == 0 ) {
@@ -113,8 +122,26 @@ class User extends \yahya\Database\Database{
     
     }
 
+    public function getDataUser(){
+        if (isset($_SESSION['USER'])) {
+            
+             return $this->checkUser();//[
+            //     "name" => $this->name,
+            //     "lastName" => $this->lastName,
+            //     "email" => $this->email,
+            //     "password" => $this->pass,
+            //     "idUser" => $this->idUser,
+            //     "profileImg" => $this->profileImg
+            // ];
+        }
+    }
 
-
+    public function logout(){
+        if (isset($_POST['logout'])) {
+            session_destroy();
+            // header("Location: http://localhost/jomoaa/");
+        }
+    }
 
 }
 ?>

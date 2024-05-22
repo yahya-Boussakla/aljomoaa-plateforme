@@ -1,6 +1,7 @@
 <?php
 
 namespace yahya\Controllers;
+// protected $data;
 
 class AuthentController extends AbstractController{
     public function __construct() {
@@ -9,13 +10,17 @@ class AuthentController extends AbstractController{
     public function loginAction(){
         $this->_view();
         $this->model->login();
-        
+        $data = $this->model->getDataUser();
+        var_dump($data);
     }
     public function signupAction(){
         $this->_view();
-        $this->model->signup();
+        $dataUser = $this->model->signup();
+        var_dump($dataUser);
         
     }
+
+
 }
 
 ?>

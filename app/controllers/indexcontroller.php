@@ -9,6 +9,9 @@ class IndexController extends AbstractController{
         $this->model = new \yahya\Models\User;
         // $this->result = $this->model->login();
         $this->_view();
+        $this->model->logout();
+        $data = $this->model->getDataUser();
+        var_dump($data);
         
     }
     public function aboutusAction(){
