@@ -10,7 +10,7 @@
 <body>
     <?php
     include APP_PATH ."/views/includes/header.php";
-    session_start();
+    
     ?>
     <main class="overflow-auto">
         <aside class="flex flex-col justify-center items-center aside">

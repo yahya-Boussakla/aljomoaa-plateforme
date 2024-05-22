@@ -10,13 +10,13 @@ class AuthentController extends AbstractController{
     public function loginAction(){
         $this->_view();
         $this->model->login();
-        $data = $this->model->getDataUser();
-        var_dump($data);
+        // $data = $this->model->getDataUser();
+        // var_dump($data);
     }
     public function signupAction(){
         $this->_view();
         $dataUser = $this->model->signup();
-        var_dump($dataUser);
+        // var_dump($dataUser);
         
     }
 

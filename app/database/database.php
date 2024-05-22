@@ -12,7 +12,7 @@ class Database{
     private $dbname = DATABASE_NAME;
 
     const NO_MATCHE_VALUE = "no matches value";
-    protected $rowsNum;
+    public $rowsNum;
     protected $result = [];
 
     private $pdo;

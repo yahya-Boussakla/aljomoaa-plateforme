@@ -12,12 +12,13 @@ class User extends \yahya\Database\Database{
 
     public function signup(){
         if (isset($_POST['signup'])) {
+            
             if ($_POST['password'] === $_POST['comfirmationPassword']) {
                 $this->colectDataUser();
                 if ($this->checkUser()) {
                     $this->setProfileImg();
                     $this->register();
-                    echo "test";
+                    
                     $_SESSION['USER'] = $this->idUser;
                     header("Location: http://localhost/jomoaa");
                 }
@@ -28,44 +29,32 @@ class User extends \yahya\Database\Database{
         }
     }
 
-    public function setDataUser($name, $lastName, $email, $idUser, $pass, $profileImg){
-        $this->name = $name;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->idUser = $idUser;
-        $this->pass = $pass;
-        $this->profileImg = $profileImg;
-        
-    }
 
     public function login(){
         if (isset($_POST['login'])) {
-            
-            
-            
+
+            $this->email = $_POST["EMAIL"];
             if (is_array($this->checkUser())) {
+
                 if ($_POST['PASSWORD'] == $this->checkUser()['PASSWORD']) {
-
-                    $dataUser = $this->setDataUser( $this->checkUser()['NOM'],$this->checkUser()['PRENOM'],$_POST['EMAIL'],$this->checkUser()['ID_USER'],$this->checkUser()['PASSWORD'],$this->checkUser()['IMG']);
-
-                    echo $this->checkUser()['NOM'];
-                    $_SESSION['USER'] = $this->idUser;
+                   
+                    $_SESSION['USER'] = $this->checkUser()['ID_USER'];
                     header("Location: http://localhost/jomoaa");
-                    return $dataUser;
-                    
+                }
+                else {
+                    echo "wrong password";
                 }
             }
         }
     }
 
     public function checkUser(){
+
         $sql = "select * FROM user WHERE EMAIL = :email;";
         $this->query($sql);
-        $this->bind(":email" , $_POST['EMAIL']);
+        $this->bind(":email" , $this->email);
         $this->execute();
         $this->rowcount();
-        echo $this->email;
-        echo "hh";
         $result = $this->get();
         
         if ($this->rowsNum == 0 ) {
@@ -89,7 +78,7 @@ class User extends \yahya\Database\Database{
 
     public function setProfileImg(){
         $fileName = basename($_FILES["file"]["name"]);
-        $targetFilePath = dirname(dirname(__FILE__),2)."/public/assets/imgs/" . $fileName;
+        $targetFilePath = "public/assets/imgs/" . $fileName;
         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
                         
         $allowedTypes = array('jpg', 'png', 'jpeg', 'gif', 'bmp');
@@ -124,22 +113,20 @@ class User extends \yahya\Database\Database{
 
     public function getDataUser(){
         if (isset($_SESSION['USER'])) {
-            
-             return $this->checkUser();//[
-            //     "name" => $this->name,
-            //     "lastName" => $this->lastName,
-            //     "email" => $this->email,
-            //     "password" => $this->pass,
-            //     "idUser" => $this->idUser,
-            //     "profileImg" => $this->profileImg
-            // ];
+            $sql = "select * from user where ID_USER = :id";
+            $this->query($sql);
+            $this->bind(":id" , $_SESSION['USER']);
+            $this->execute();
+            $result = $this->get();
+            return $result;
         }
     }
 
     public function logout(){
         if (isset($_POST['logout'])) {
             session_destroy();
-            // header("Location: http://localhost/jomoaa/");
+            header("Location: http://localhost/jomoaa/");
+            exit();
         }
     }
 

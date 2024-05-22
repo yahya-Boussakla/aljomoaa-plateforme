@@ -3,15 +3,18 @@ namespace yahya\Controllers;
 
 class IndexController extends AbstractController{
 
-    protected $result;
+    protected $data;
+
+
+    public function __construct(){
+
+        $this->model = new \yahya\Models\User;
+    }
 
     public function defaultAction(){
-        $this->model = new \yahya\Models\User;
-        // $this->result = $this->model->login();
-        $this->_view();
         $this->model->logout();
-        $data = $this->model->getDataUser();
-        var_dump($data);
+        $this->data = $this->model->getDataUser();
+        $this->_view();
         
     }
     public function aboutusAction(){

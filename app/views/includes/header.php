@@ -3,12 +3,11 @@
     <?php
     // session_start();
     if (isset($_SESSION['USER'])) {
-      // var_dump($data);
     ?>
       <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" style="background-color: #ffb860;" class="flex items-center text-sm pe-1 pl-4 pr-4 py-4 font-medium text-gray-900 rounded-xl hover:text-black-600 dark:hover:text-black md:me-0 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white" type="button">
       <span class="sr-only">Open user menu</span>
-      <img class="w-8 h-8 me-2 rounded-full" src="public/assets/imgs/imgsmom.jpg" alt="user photo">
-      Bonnie Green
+      <img class="w-8 h-8 me-2 rounded-full" src="<?php echo $this->data['IMG'] ;?>" alt="user photo">
+      حسابي
       <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
       </svg>
@@ -17,8 +16,8 @@
       <!-- Dropdown menu -->
       <div id="dropdownAvatarName" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
           <div class="px-4 py-3 text-sm text-gray-900 ">
-            <div class="font-medium ">حساب المستعمل</div>
-            <div class="truncate">name@flowbite.com</div>
+            <div class="font-medium "><?php echo $this->data['NOM'] . " " . $this->data['PRENOM'];  ?></div>
+            <div class="truncate"><?php echo  $this->data['EMAIL']; ?></div>
           </div>
           <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
             <li>
@@ -31,15 +30,15 @@
           </ul>
           <div class="py-2">
             <form action="" method="post">
-              <input type="submit" name="logout" value="تسجيل الخروج" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-gray-800" >
+              <input type="submit" name="logout" value="تسجيل الخروج" class="w-full text-right block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-gray-800" >
             </form>
           </div>
     <?php
     }
     else {
     ?>
-      <a class="login text-center no-underline rounded-md w-4/12" href="http://localhost/jomoaa/authent/login">ابدأ هنا</a>
-      <a href="http://localhost/jomoaa/authent/signup" class="text-center no-underline rounded-md w-5/12 ">تسجيل الدخول</a>
+      <a class="login text-center no-underline rounded-md w-4/12" href="http://localhost/jomoaa/authent/signup">ابدأ هنا</a>
+      <a href="http://localhost/jomoaa/authent/login" class="text-center no-underline rounded-md w-5/12 ">تسجيل الدخول</a>
     <?php
     }
     ?>
