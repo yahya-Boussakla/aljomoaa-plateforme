@@ -5,6 +5,7 @@ namespace yahya;
 
 define('APP_PATH', str_replace('\\','/',dirname(realpath(__FILE__))));
 define('VIEWS_PATH', APP_PATH . "/views/");
+define('FOLDER_PATH' ,dirname(dirname(__FILE__),2));
 // define('')
 
 // database configuration 

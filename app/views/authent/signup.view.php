@@ -9,10 +9,8 @@
     <title>Your Space</title>
 </head>
 <body>
-<nav class='rounded-br-3xl rounded-bl-3xl'>
-    <img src="../assets/imgs/الجمعة-modified.png" alt="">
-   
-    
+  <nav class='rounded-br-3xl rounded-bl-3xl'>
+    <img src="../assets/imgs/الجمعة-modified.png" alt=""> 
   </nav>
   <section>
   <i class="fa-solid fa-arrow-left" onclick="history.back()"></i>

@@ -16,21 +16,21 @@
       <!-- Dropdown menu -->
       <div id="dropdownAvatarName" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
           <div class="px-4 py-3 text-sm text-gray-900 ">
-            <div class="font-medium "><?php echo $this->data['NOM'] . " " . $this->data['PRENOM'];  ?></div>
-            <div class="truncate"><?php echo  $this->data['EMAIL']; ?></div>
+            <div class="font-medium text-center"><?php echo $this->data['NOM'] . " " . $this->data['PRENOM'];  ?></div>
+            <div class="truncate text-center"><?php echo  $this->data['EMAIL']; ?></div>
           </div>
           <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
             <li>
               <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">حسابي</a>
             </li>
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">الوسخ</a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-gray-800">المسودة</a>
             </li>
             
           </ul>
           <div class="py-2">
             <form action="" method="post">
-              <input type="submit" name="logout" value="تسجيل الخروج" class="w-full text-right block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-gray-800" >
+              <input type="submit" name="logout" value="تسجيل الخروج" class="w-full cursor-pointer text-right block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-gray-800" >
             </form>
           </div>
     <?php
@@ -79,7 +79,9 @@
             <p class="px-2 py-2">></p>
         </div>
         <button class="rounded px-4 py-2 text-white">
-        أكتب مقالتك
+          <a href="http://localhost/jomoaa/blog">
+            أكتب مقالتك
+          </a>
         <i class="fa-solid fa-plus"></i>
         </button>
     </nav>

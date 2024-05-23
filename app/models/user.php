@@ -8,7 +8,7 @@ class User extends \yahya\Database\Database{
     public $lastName;
     public $email;
     public $pass;
-    public $profileImg =  "/opt/lampp/htdocs/jomoaa/public/assets/imgs/imgsmom";
+    public $profileImg =  FOLDER_PATH ."/public/assets/imgs/imgsmom.jpg";
 
     public function signup(){
         if (isset($_POST['signup'])) {
@@ -18,7 +18,6 @@ class User extends \yahya\Database\Database{
                 if ($this->checkUser()) {
                     $this->setProfileImg();
                     $this->register();
-                    
                     $_SESSION['USER'] = $this->idUser;
                     header("Location: http://localhost/jomoaa");
                 }
@@ -66,40 +65,42 @@ class User extends \yahya\Database\Database{
     } 
 
     public function register(){
-        $sqli = "insert into user (NOM, PRENOM, EMAIL, PASSWORD, IMG)values(:name , :lastname , :email , :password, :img);";
-        $this->query($sqli);
+        $sql = "insert into user (NOM, PRENOM, EMAIL, PASSWORD, IMG)values(:name , :lastname , :email , :password, :img);";
+        
+        $this->query($sql);
         $this->bind(":name",$this->name);
         $this->bind(":lastname",$this->lastName);
         $this->bind(":email",$this->email);
         $this->bind(":password",$this->pass);
         $this->bind(":img",$this->profileImg);
         $this->execute();
+        $this->idUser = $this->last_insert_id();        
+        
     }
 
     public function setProfileImg(){
         $fileName = basename($_FILES["file"]["name"]);
-        $targetFilePath = "public/assets/imgs/" . $fileName;
+        $targetFilePath = dirname(dirname(__FILE__),2) . "/public/assets/imgs/" . $fileName;
         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-                        
+        echo "<br>" . $targetFilePath;
+    
         $allowedTypes = array('jpg', 'png', 'jpeg', 'gif', 'bmp');
-        if (in_array(strtolower($fileType), $allowedTypes)) {        
+        if (in_array(strtolower($fileType), $allowedTypes)) {
+    
             if ($_FILES["file"]["error"] == 0) {
-                
                 if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
-
                     echo "The file ". htmlspecialchars($fileName). " has been uploaded.";
-                    $this->profileImg = $targetFilePath;
+                    return $this->profileImg = "public/assets/imgs/" . $fileName;
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
-            }else {
+            } else {
                 echo "Error: " . $_FILES["file"]["error"];
             }
         } else {
             echo "Sorry, only JPG, JPEG, PNG, GIF, & BMP files are allowed.";
         }
     }
-
 
 
     public function colectDataUser(){
