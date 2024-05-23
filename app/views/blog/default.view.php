@@ -4,14 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="assets/css/styl.css"> -->
   <link rel="stylesheet" href="assets/css/blog.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/6e2f9a7b88.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
   <title>كتابة مقال</title>
 </head>
 
 <body>
+<i class="fa-solid fa-arrow-left" onclick="history.back()"></i>
   <nav class='rounded-br-3xl rounded-bl-3xl'>
     <img src="assets/imgs/الجمعة-modified.png" alt="">
     <div id="authent" class="absolute flex flex-row justify-center items-center top-5 mr-1 z-10 w-2/12 h-4-12 right-0 font-semibold gap-x-5 text-white">
@@ -47,6 +49,23 @@
         </div>
   </nav>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+  <section>
+  <button onclick="test()">test</button>
+    <div id="toolbar"></div>
+    <div id="editor">
+        <h2>Demo Content</h2>
+        <p>Preset build with <code>snow</code> theme, and some common formats.</p>
+      </div>
+
+
+      
+    <script>
+        
+      console.log(123);
+
+    </script>
+  </section>
 </body>
 
 </html>
