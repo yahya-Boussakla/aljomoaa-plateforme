@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 <head>
   <meta charset="UTF-8">
@@ -9,19 +9,18 @@
   <script src="https://kit.fontawesome.com/6e2f9a7b88.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
-
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
   <title>كتابة مقال</title>
 </head>
 
 <body>
-<!-- <i class="fa-solid fa-arrow-left" onclick="history.back()"></i> -->
-<header>
-<nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-  <div class=" flex flex-wrap items-center w-full justify-between ">
-    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-    <img src="assets/imgs/الجمعة-modified.png" alt="">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">الجمعة</span>
+  <i id="arrow" class="fa-solid fa-arrow-left" onclick="history.back()"></i>
+  <header>
+    <nav class="">
+      <div class=" flex flex-wrap items-center w-full justify-between ">
+    <a href="http://localhost/jomoaa/" class="flex items-center h-12 space-x-3 rtl:space-x-reverse">
+      <img src="assets/imgs/الجمعة-modified.png" class="w-12" alt="">
     </a>
     <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" style="background-color: #ffb860; direction: rtl;" class="flex items-center text-sm pe-1 pl-4 pr-4 py-4 font-medium text-gray-900 rounded-xl hover:text-black-600 dark:hover:text-black md:me-0 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white" type="button">
       <span class="sr-only">Open user menu</span>
@@ -53,23 +52,47 @@
             </form>
           </div>
         </div>
-  </div>
-</nav>
-</header>
-
-<section>
-  <div id="toolbar"></div>
-  <div id="editor">
-    <h2>Demo Content</h2>
-    <p>Preset build with <code>snow</code> theme, and some common formats.</p>
-  </div>
-  <button onclick="test()">test</button>
+      </div>
+    </nav>
+  </header>
+  <article class="flex flex-row mt-32 justify-evenly">
+    <section class="flex flex-col w-2/12 gap-10 text-right">
+      <button style="background-color: #ffb860;" onclick="test()" class="text-white font-semibold py-2 px-8 rounded">
+        نشر  
+      </button>
+      <button class="text-center text-gray-800 font-semibold border border-black rounded inline-flex items-center">
+      <span id="private" class="h-full px-4 py-2 border-r border-black">
+        <i class="fa-regular fa-eye"></i>
+      </span>
+      <span class="px-16 text-center">
+        الخصوصية
+      </span>
+      </button>
+      <button class="bg-transparent font-semibold py-2 px-4 border border-black rounded">    
+        حفظ في المسودة
+      </button>
+      <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">كيف أكتب مقال ؟</a>
+    </section>
+    <section  class="w-7/12 rounded-xl">
+      <div class=" text-right w-full flex flex-row gap-10">
+        <select class="bg-transparent rounded text-gray-800 font-semibold w-4/12 border-b border-orange-300 text-center px-4" name="" id="">
+          <option value="">
+          الصنف
+          </option>
+        </select>
+        <input type="text" class="bg-transparent text-gray-800 font-semibold w-8/12 border-x-0 border-b border-t-0 border-orange-300 text-right px-4" placeholder="العنوان">
+      </div>
+      <div id="toolbar" class=" text-left mt-10"></div>
+      <div id="editor" class="min-h-96 text-right">
+      أكتب هنا
+      </div>
+    </section>
+  </article>
   <form method="post" action="" id="myForm">
-    <input type="hidden" name="test" id="test">
+    <input type="hidden" name="blogContent" id="test">
   </form>      
   <script src="assets/js/script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-  </section>
+  
 </body>
-
 </html>

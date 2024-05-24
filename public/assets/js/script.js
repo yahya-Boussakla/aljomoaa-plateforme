@@ -27,7 +27,10 @@ const toolbarOptions = [
   });
   function test() {
     const html = quill.getSemanticHTML();
-    console.log(document.getElementsByName("test")[0]);
-    document.getElementsByName("test")[0].value = html;
+    document.getElementsByName("blogContent")[0].value = html;
     document.getElementById("myForm").submit();
   }
+  let container = document.getElementsByClassName("ql-editor");
+  let tool = document.getElementsByClassName("ql-toolbar");
+  container[0].style= "text-align: right;";
+  container[0].setAttribute("spellcheck","false");

@@ -28,10 +28,18 @@ nav {
 nav img {
   width: 4%;
 }
-i{
+#arrow{
   font-size: 190%;
   position: absolute;
   top: 20%;
   left: 7%;
   cursor: pointer;
+}
+#title{
+  font-family: "Noto Nastaliq Urdu", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+#post{
+  background-color: #ffb860;
 }
