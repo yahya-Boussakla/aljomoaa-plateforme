@@ -26,6 +26,8 @@ const toolbarOptions = [
     theme: 'snow'
   });
   function test() {
-      const html = quill.getSemanticHTML();
-      console.log(html);
+    const html = quill.getSemanticHTML();
+    console.log(document.getElementsByName("test")[0]);
+    document.getElementsByName("test")[0].value = html;
+    document.getElementById("myForm").submit();
   }
