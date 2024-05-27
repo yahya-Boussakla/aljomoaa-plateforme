@@ -1,3 +1,11 @@
+
+<?php
+if (!(isset($_SESSION['USER']))) {
+  header("Location: http://localhost/jomoaa/authent/login");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ar">
 
@@ -24,7 +32,7 @@
     </a>
     <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" style="background-color: #ffb860; direction: rtl;" class="flex items-center text-sm pe-1 pl-4 pr-4 py-4 font-medium text-gray-900 rounded-xl hover:text-black-600 dark:hover:text-black md:me-0 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white" type="button">
       <span class="sr-only">Open user menu</span>
-      <img class="w-8 h-8 me-2 rounded-full" src="public/assets/imgs/bg.png" alt="user photo">
+      <img class="w-8 h-8 me-2 rounded-full" src="<?php echo $this->data['IMG'] ;?>" alt="user photo">
       حسابي
       <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -34,8 +42,8 @@
       <!-- Dropdown menu -->
       <div id="dropdownAvatarName" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
           <div class="px-4 py-3 text-sm text-gray-900 ">
-            <div class="font-medium "></div>
-            <div class="truncate"></div>
+            <div class="font-medium "><?php echo $this->data['NOM'] . " " . $this->data['PRENOM'];  ?></div>
+            <div class="truncate"><?php echo  $this->data['EMAIL']; ?></div>
           </div>
           <ul class="py-2 text-sm text-right text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
             <li>
@@ -76,7 +84,7 @@
     <section  class="w-7/12 rounded-xl">
       <div class=" text-right w-full flex flex-row gap-10">
         <select class="bg-transparent rounded text-gray-800 font-semibold w-4/12 border-b border-orange-300 text-center px-4" name="" id="">
-          <option value="">
+          <option class="text-center" value="">
           الصنف
           </option>
         </select>
@@ -84,12 +92,12 @@
       </div>
       <div id="toolbar" class=" text-left mt-10"></div>
       <div id="editor" class="min-h-96 text-right">
-      أكتب هنا
       </div>
     </section>
   </article>
   <form method="post" action="" id="myForm">
     <input type="hidden" name="blogContent" id="test">
+    <input type="hidden" name="mignature">
   </form>      
   <script src="assets/js/script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

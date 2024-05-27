@@ -23,14 +23,27 @@ const toolbarOptions = [
     modules: {
       toolbar: toolbarOptions
     },
+    placeholder: 'أكتب مقالتك',
     theme: 'snow'
   });
   function test() {
     const html = quill.getSemanticHTML();
     document.getElementsByName("blogContent")[0].value = html;
+    document.getElementsByName("mignature")[0].value = getPTags();
     document.getElementById("myForm").submit();
   }
+  
+  function getPTags() {
+    var editorContainer = document.querySelector('.ql-editor');
+    var firstPTag = editorContainer.querySelectorAll('p');
+    var htmlString = Array.from(firstPTag).map(function(node) {
+      return node.outerHTML;
+    }).join('');
+
+    return htmlString;
+   
+  }
+
   let container = document.getElementsByClassName("ql-editor");
-  let tool = document.getElementsByClassName("ql-toolbar");
   container[0].style= "text-align: right;";
   container[0].setAttribute("spellcheck","false");
