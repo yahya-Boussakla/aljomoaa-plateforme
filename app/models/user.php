@@ -112,24 +112,9 @@ class User extends \yahya\Database\Database{
     
     }
 
-    public function getDataUser(){
-        if (isset($_SESSION['USER'])) {
-            $sql = "select * from user where ID_USER = :id";
-            $this->query($sql);
-            $this->bind(":id" , $_SESSION['USER']);
-            $this->execute();
-            $result = $this->get();
-            return $result;
-        }
-    }
+   
 
-    public function logout(){
-        if (isset($_POST['logout'])) {
-            session_destroy();
-            header("Location: http://localhost/jomoaa/");
-            exit();
-        }
-    }
+    
 
 }
 ?>

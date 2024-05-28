@@ -12,6 +12,7 @@ class BlogController extends AbstractController {
     }
 
     public function defaultAction(){
+        $this->model->logout();
         $this->data = $this->model->getDataUser();
         $this->_view();
         $this->model->getBlog();

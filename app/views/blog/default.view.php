@@ -66,7 +66,7 @@ if (!(isset($_SESSION['USER']))) {
   <article class="flex flex-row mt-32 justify-evenly">
     <section class="flex flex-col w-2/12 gap-10 text-right">
       <button style="background-color: #ffb860;" onclick="test()" class="text-white font-semibold py-2 px-8 rounded">
-        نشر  
+        نشر
       </button>
       <button class="text-center text-gray-800 font-semibold border border-black rounded inline-flex items-center">
       <span id="private" class="h-full px-4 py-2 border-r border-black">
@@ -82,23 +82,24 @@ if (!(isset($_SESSION['USER']))) {
       <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">كيف أكتب مقال ؟</a>
     </section>
     <section  class="w-7/12 rounded-xl">
+      <form method="post" action="" id="myForm">
       <div class=" text-right w-full flex flex-row gap-10">
-        <select class="bg-transparent rounded text-gray-800 font-semibold w-4/12 border-b border-orange-300 text-center px-4" name="" id="">
+        <input type="hidden" name="blogContent" id="test">
+        <input type="hidden" name="mignature">
+        <select name="category" class="bg-transparent rounded text-gray-800 font-semibold w-4/12 border-b border-orange-300 text-center px-4" name="" id="">
           <option class="text-center" value="">
-          الصنف
+            الصنف
           </option>
         </select>
-        <input type="text" class="bg-transparent text-gray-800 font-semibold w-8/12 border-x-0 border-b border-t-0 border-orange-300 text-right px-4" placeholder="العنوان">
+        <input type="text" name="title" class="bg-transparent text-gray-800 font-semibold w-8/12 border-x-0 border-b border-t-0 border-orange-300 text-right px-4" placeholder="العنوان">
       </div>
+    </form>     
       <div id="toolbar" class=" text-left mt-10"></div>
       <div id="editor" class="min-h-96 text-right">
       </div>
     </section>
   </article>
-  <form method="post" action="" id="myForm">
-    <input type="hidden" name="blogContent" id="test">
-    <input type="hidden" name="mignature">
-  </form>      
+     
   <script src="assets/js/script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   
