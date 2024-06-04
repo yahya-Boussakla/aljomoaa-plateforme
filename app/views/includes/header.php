@@ -46,9 +46,9 @@
 
 
         </div>
-        <img src="assets/imgs/bg-.png" alt="" class="bg" />
+        <img src="/jomoaa/public/assets/imgs/bg-.png" alt="" class="bg" />
         <h1>الجمعة</h1>
-        <img src="assets/imgs/الجمعة-modified.png" alt="" class="logo"/>
+        <img src="/jomoaa/public/assets/imgs/الجمعة-modified.png" alt="" class="logo"/>
         
         <div id="bg"></div>
     </header>

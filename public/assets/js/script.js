@@ -26,29 +26,31 @@ const toolbarOptions = [
     placeholder: 'أكتب مقالتك',
     theme: 'snow'
   });
-  function test() {
+
+
+  
+  function setBlog() {
     const html = quill.getSemanticHTML();
     document.getElementsByName("blogContent")[0].value = html;
-    document.getElementsByName("mignature")[0].value = getPTags();
     document.getElementById("myForm").submit();
     
   }
   
-  function getPTags() {
-    var editorContainer = document.querySelector('.ql-editor');
-    var pTags = editorContainer.querySelectorAll('p');
-    let mignature ;
-    // var htmlString = Array.from(firstPTag).map(function(node) {
-    //   return node.outerHTML;
-    // }).join('');
-    for (const P of pTags) {
-      if (P.innerHTML !== "<br>") {
-        mignature += P.innerText;
-      }
+  // function getPTags() {
+  //   var editorContainer = document.querySelector('.ql-editor');
+  //   var pTags = editorContainer.querySelectorAll('p');
+  //   let mignature ;
+  //   // var htmlString = Array.from(firstPTag).map(function(node) {
+  //   //   return node.outerHTML;
+  //   // }).join('');
+  //   for (const P of pTags) {
+  //     if (P.innerHTML !== "<br>") {
+  //       mignature += P.innerText;
+  //     }
       
-    }
-    return mignature;
-  }
+  //   }
+  //   return mignature;
+  // }
 
   let container = document.getElementsByClassName("ql-editor");
   container[0].style= "text-align: right;";

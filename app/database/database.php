@@ -53,6 +53,10 @@ class Database{
         return $this->result = $this->stmt->fetch(PDO::FETCH_ASSOC); 
     }
 
+    public function getAll(){
+        return $this->result = $this->stmt->fetchAll(PDO::FETCH_ASSOC); 
+    }
+
     public function bind($param , $value , $type = null){
         if (is_null($type)) {
             switch (true) {
@@ -97,5 +101,65 @@ class Database{
             exit();
         }
     }
+
+    public function getBlogs(){
+        $sql = "SELECT ID_BLOG, ID_USER ,ID_ADMIN ,TITRE ,CATEGORY 	,CONTENT ,BLOG_DATE ,ETAT FROM blog";
+        $this->query($sql);
+        $this->execute();
+        $blogs = $this->getAll();
+        return $blogs;
+       
+    }
+
+    public function findUser($id){
+        $sql = "select * from user where ID_USER = :id";
+        $this->query($sql);
+        $this->bind(":id" , $id);
+        $this->execute();
+        $result = $this->get();
+        return $result;
+    }
+
+    public function getMignature($blog){
+
+        $text = explode('<p', $blog);
+   
+           $mignature = "";
+           for ($i=1; $i < count($text); $i++) { 
+               $mignature .= " " . explode('>',strip_tags(explode('</p>', $text[$i])[0]))[1];
+           }
+           return substr(strip_tags($mignature),0,900);
+    }
+
+    public function timer($postdate){
+        
+        $startdate = date('Y-m-d H:i:s'); 
+        
+
+        $diff=strtotime($startdate)-strtotime($postdate); 
+
+        // immediately convert to days 
+        $temp=$diff/86400; // 60 sec/min*60 min/hr*24 hr/day=86400 sec/day 
+
+        $days=floor($temp);  $temp=24*($temp-$days); 
+        $hours=floor($temp);  $temp=60*($temp-$hours); 
+        $minutes=floor($temp);  $temp=60*($temp-$minutes); 
+        $seconds=floor($temp);  
+
+        if ($days > 0) {
+            return " منذ " . $days . " أيام ";
+        }
+        elseif ($hours > 0 ) {
+            return " منذ " . $hours . " ساعات ";
+        }
+        elseif ($minutes > 0) {
+            return " منذ " . $minutes . " دقائق";
+        }
+        else {
+            return "الآن";
+        }
+        
+    }
+    
 }
 ?>

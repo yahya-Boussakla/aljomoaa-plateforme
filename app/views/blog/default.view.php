@@ -65,7 +65,7 @@ if (!(isset($_SESSION['USER']))) {
   </header>
   <article class="flex flex-row mt-32 justify-evenly">
     <section class="flex flex-col w-2/12 gap-10 text-right">
-      <button style="background-color: #ffb860;" onclick="test()" class="text-white font-semibold py-2 px-8 rounded">
+      <button style="background-color: #ffb860;" onclick="setBlog()" class="text-white font-semibold py-2 px-8 rounded">
         نشر
       </button>
       <button class="text-center text-gray-800 font-semibold border border-black rounded inline-flex items-center">
@@ -85,10 +85,24 @@ if (!(isset($_SESSION['USER']))) {
       <form method="post" action="" id="myForm">
       <div class=" text-right w-full flex flex-row gap-10">
         <input type="hidden" name="blogContent" id="test">
-        <input type="hidden" name="mignature">
-        <select name="category" class="bg-transparent rounded text-gray-800 font-semibold w-4/12 border-b border-orange-300 text-center px-4" name="" id="">
+        <select name="category" class="bg-transparent rounded text-gray-800 font-semibold w-4/12 border-b border-orange-300 text-center px-4" >
           <option class="text-center" value="">
             الصنف
+          </option>
+          <option class="text-center" value="في السياسة">
+          في السياسة
+          </option>
+          <option class="text-center" value="في الصحة">
+          في الصحة
+          </option>
+          <option class="text-center" value="في التاريخ">
+          في التاريخ
+          </option>
+          <option class="text-center" value="في الحياة">
+          في الحياة
+          </option>
+          <option class="text-center" value="في الاقتصاد">
+          في الاقتصاد
           </option>
         </select>
         <input type="text" name="title" class="bg-transparent text-gray-800 font-semibold w-8/12 border-x-0 border-b border-t-0 border-orange-300 text-right px-4" placeholder="العنوان">

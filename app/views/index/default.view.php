@@ -25,22 +25,24 @@
             <li class="w-11/12">في الاقتصاد</li>
         </aside>
         <article>
+            <?php foreach ($this->blogs as $value) : ?>
             <div class="blog flex flex-col gap-4">
                 <div class="flex flex-row justify-between w-11/12 items-center">
-                    <div class="caregory">في الصحة</div>
+                    <div class="caregory"><?= $value['CATEGORY'] ?></div>
                     <div class="flex flex-row justify-center items-center gap-1.5">
-                        <span>سعيد الكملي</span>
-                        <img src="assets/imgs/kamli.jpg" class="rounded-full w-9 h-9" alt="">
+                        <span><?= $this->findOne($value['ID_USER'])['NOM'] . " " . $this->findOne($value['ID_USER'])['PRENOM']?></span>
+                        <img src="<?= $this->findOne($value['ID_USER'])['IMG'] ?>" class="rounded-full w-9 h-9" alt="">
                     </div>
                 </div>
                 <hr>
-                <section class="flex flex-col gap-4">
+                <section class="flex flex-col gap-4 w-full">
                     <div class="flex flex-row justify-between w-full items-baseline">
-                        <h1>التبرع بالدم</h1>
-                        <span>منذ 2 ساعات</span>
+                        <h1 class="titre"><?= $value['TITRE'] ?></h1>
+                        <span class="date"><?= $this->passedTime($value['BLOG_DATE']) ?></span>
                     </div>
                     <p class="w-full">
-                    <p><br></p><p>موضوع حو التبرع بالدم هو موضوع مهم يجب أن يتم تسليط الضوء عليه فيمجتمعاتنا العربية. فالتبرع بالدم هو عمل إنساني يساهم في إنقاذ حياةالآخرين، ويعتبر من أعظم الأعمال الخيرية التي يمكن للإنسان أن يقومبها. التبرع بالدم هو عملية يقوم بها الأشخاص بتقديم كمية من الدمالخاص بهم للمستشفيات أو المراكز الطبية ليتم إستخدامها في الذين يحتاجون لنقل الدم. ويمكن للدم الذي يتم التبرع به أنينقذ حياة الكثير من الأشخاص الذين يعانون من فقر الدم أو الأمراضالمزمنة أو الحوادث الطارئة. في....</p>                    </p>
+                        <?= $this->getMignature($value['CONTENT']) ?>
+                    </p>
                     <div class="flex flex-row justify-between w-full items-center">
                         <div class="flex flex-row justify-between items-center w-1/3">
                         <i class="fa-regular fa-bookmark"></i>
@@ -53,10 +55,14 @@
                             <i class="fa-regular fa-comment"></i>
                         </div>
                         </div>
-                        <button class="rounded-tr-2xl rounded-bl-2xl px-6 py-1.5">اقرأ المزيد</button>
+                        <form action="" method="post">
+                            <input type="submit" name="read" class="rounded-tr-2xl rounded-bl-2xl px-6 py-1.5" value="اقرأ المزيد">
+                            <input type="hidden" name="ID_BLOG" value="<?= $value['ID_BLOG'] ?>">
+                        </form>
                     </div>
                 </section>
             </div>
+            <?php endforeach; ?>
         </article>
     </main>
     <footer>

@@ -112,9 +112,12 @@ class User extends \yahya\Database\Database{
     
     }
 
-   
-
+    public function readBlog(){
+        if (isset($_POST['read'])) {
+            $_SESSION['ID_BLOG'] = $_POST['ID_BLOG'];
+            header("Location: http://localhost/jomoaa/blog/details");
+        }
+    }
     
-
 }
 ?>

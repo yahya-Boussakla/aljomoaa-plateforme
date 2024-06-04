@@ -195,7 +195,7 @@ section{
   padding-inline: 9%;
   flex-direction: column;
 }
-section span{
+.date{
   color: #2857D2;
   font-size: 80%;
 }
@@ -209,17 +209,17 @@ article {
   width: 65%;
   margin: 1% 10%;
 }
-section button {
+input[type="submit"] {
   border: 1px solid #7690D2;
   background-color: white;
   color: #7690D2;
   cursor: pointer;
 }
-section button:hover {
+input[type="submit"]:hover {
   background-color: #7690D2;
   color: white;
 }
-section h1 {
+.titre {
   text-align: center;
   color: #2958d2;
   font-size: 180%;
