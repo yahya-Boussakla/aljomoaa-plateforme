@@ -161,5 +161,44 @@ class Database{
         
     }
     
+    public function checkLike($blogId,$userId){
+        $sql = "SELECT NOM FROM adorer INNER JOIN user USING(ID_USER) WHERE ID_USER = :userId AND ID_BLOG = :blogId";
+        $this->query($sql);
+        $this->bind(':blogId',$blogId);
+        $this->bind(':userId',$userId);
+        $this->execute();
+        $this->rowcount();
+        $this->get();
+        if ($this->rowsNum == 0 ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function likeCount($blogId){
+        $sql = "SELECT COUNT(*) FROM `adorer` WHERE ID_BLOG = :blogId";
+        $this->query($sql);
+        $this->bind(':blogId', $blogId);
+        $this->execute();
+        return $this->get()['COUNT(*)'];
+    }
+
+    public function checkSave($blogId,$userId){
+        $sql = "SELECT NOM FROM enregistrer INNER JOIN user USING(ID_USER) WHERE ID_USER = :userId AND ID_BLOG = :blogId";
+        $this->query($sql);
+        $this->bind(':blogId',$blogId);
+        $this->bind(':userId',$userId);
+        $this->execute();
+        $this->rowcount();
+        $this->get();
+        if ($this->rowsNum == 0 ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
 ?>

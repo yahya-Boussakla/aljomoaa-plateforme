@@ -43,12 +43,30 @@
                     <p class="w-full">
                         <?= $this->getMignature($value['CONTENT']) ?>
                     </p>
-                    <div class="flex flex-row justify-between w-full items-center">
+                    <div class="reaction flex flex-row justify-between w-full items-center">
                         <div class="flex flex-row justify-between items-center w-1/3">
-                        <i class="fa-regular fa-bookmark"></i>
-                        <div class="flex flex-row justify-between items-center w-auto gap-1">
-                            <p>12k.2</p>
-                            <i class="fa-regular fa-heart"></i>
+                        <i <?php if (isset($_SESSION['USER']) && $this->isSaved($value['ID_BLOG'], $_SESSION['USER']) !== true) { ?>
+                           style="color: #ffb860;" is_saved="true" class="save fa-solid 
+                        <?php }else{
+                        ?>
+                          is_saved="false" class="save fa-regular
+                        <?php
+                        }?>
+                        fa-bookmark" id-blog="<?= $value['ID_BLOG'] ?>"></i>
+                        <div class="like flex flex-row justify-between items-center w-auto gap-1">
+                            <p class="likes"><?= $this->likes($value['ID_BLOG']) ?></p>
+                            <?php
+                            if (isset($_SESSION['USER']) && $this->isLiked($value['ID_BLOG'],$_SESSION['USER']) !== true ) {  
+                            ?>
+                             <i data-is_liked='true' class="fa-solid fa-heart" style="color: red;" id-blog="<?= $value['ID_BLOG'] ?>"></i>
+                            <?php
+                            }
+                            else {
+                            ?>
+                            <i data-is_liked='false' class="fa-regular fa-heart" id-blog="<?= $value['ID_BLOG'] ?>"></i>
+                            <?php    
+                            }
+                            ?>
                         </div>
                         <div class="flex flex-row justify-between items-center w-auto gap-1">
                             <p>2000</p>
@@ -57,7 +75,7 @@
                         </div>
                         <form action="" method="post">
                             <input type="submit" name="read" class="rounded-tr-2xl rounded-bl-2xl px-6 py-1.5" value="اقرأ المزيد">
-                            <input type="hidden" name="ID_BLOG" value="<?= $value['ID_BLOG'] ?>">
+                            <input type="hidden" class="blogId" name="ID_BLOG" value="<?= $value['ID_BLOG'] ?>">
                         </form>
                     </div>
                 </section>
@@ -68,7 +86,9 @@
     <footer>
         <a href="/login/login.html">admin</a>
     </footer>        
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/like.js"></script>
+    <!-- <script src="script.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

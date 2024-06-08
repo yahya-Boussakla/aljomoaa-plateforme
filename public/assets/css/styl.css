@@ -225,6 +225,10 @@ input[type="submit"]:hover {
   font-size: 180%;
   font-weight: 600;
 }
+i{
+  cursor: pointer;
+  animation: 5s ;
+}
 footer {
   text-align: end;
   background-color: #ffb860;

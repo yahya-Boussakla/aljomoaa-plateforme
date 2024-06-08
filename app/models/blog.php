@@ -28,5 +28,6 @@ class Blog extends \yahya\Database\Database{
             return $this->get();
         }
     }
+
     
 }
