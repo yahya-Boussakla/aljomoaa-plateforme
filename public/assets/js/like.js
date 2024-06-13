@@ -97,8 +97,14 @@ $(".save").click(function(event){
           },600);
           $(event.target).addClass('fa-solid').removeClass('fa-regular');
           $(event.target).css('color', '#ffb860');     
-          }          
-    
+          }
         }
   }});
 });
+
+
+let container = document.getElementsByClassName("ql-editor");
+  container[0].style= "text-align: right;";
+  container[0].setAttribute("spellcheck","false");
+
+  let searchForm = document.getElementById('Myform');

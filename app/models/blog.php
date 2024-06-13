@@ -13,19 +13,33 @@ class Blog extends \yahya\Database\Database{
             $this->bind(':category', $_POST['category']);
             $this->bind(':postdate', date('Y-m-d H:i:s'));
             $this->bind(':user', $_SESSION['USER']);
-            $this->bind(':etat', 'en cours');
+            if ($_POST['status'] == 'en cours') {
+                $this->bind(':etat', 'en cours');
+            }
+            elseif ($_POST['status'] == 'brouillon') {
+                $this->bind(':etat', 'brouillon');
+            }
             $this->execute();
-           
         }
     }
 
     public function getBlogDetails(){
         if (isset($_SESSION['ID_BLOG'])) {
-            $sql = "select * from blog where ID_BLOG = :idBlog";
+            $sql = "select * from blog inner join user using(ID_USER) where ID_BLOG = :idBlog";
             $this->query($sql);
             $this->bind(':idBlog', $_SESSION['ID_BLOG']);
             $this->execute();
             return $this->get();
+        }
+    }
+
+    public function otherBlogs(){
+        if (isset($_SESSION['ID_BLOG'])) {
+            $sql = "select * from blog inner join user using(ID_USER) where ID_BLOG != :idBlog and etat = 'en cours'";
+            $this->query($sql);
+            $this->bind(':idBlog', $_SESSION['ID_BLOG']);
+            $this->execute();
+            return $this->getAll();
         }
     }
 

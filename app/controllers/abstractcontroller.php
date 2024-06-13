@@ -7,6 +7,8 @@ class AbstractController {
     protected $_params;
     public $model;
     protected $_errors = false;
+    protected $profileStatus;
+    protected $navItems ;
 
 
     public function notFoundAction(){

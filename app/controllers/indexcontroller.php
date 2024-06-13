@@ -5,26 +5,54 @@ class IndexController extends AbstractController{
 
     protected $data;
     protected $blogs;
-    // protected $is_liked;
+    protected $readBlog;
+    protected $navContent;
 
 
     public function __construct(){
-
+        $this->readModel = new \yahya\Models\Read;
         $this->model = new \yahya\Models\User;
+        $this->model->logout();
+        $this->model->acount();
+        $this->model->brouillan();
+        $this->model->saves();
+        $this->navItems = ['الرئيسية'];
+
+        if (isset($_POST['read'])) {
+            if ($this->readModel->readedBlog() == 0) {
+                $this->readModel->insertRead();
+            }
+        }
     }
 
     public function defaultAction(){
-        $this->model->logout();
+       
         $this->data = $this->model->getDataUser();
-        $this->blogs = $this->model->getBlogs();
+        if (isset($_POST['search'])) {
+            $this->blogs = $this->model->searchAceuill();
+        }
+        elseif (isset($_POST['navContent'])) {
+        $this->navContent = $this->model->filter()[0];
+            $this->blogs = $this->model->filter()[1];
+            $this->navItems = ['الرئيسية',$_POST['navContent']];
+        }
+        else {
+            $this->blogs = $this->model->getBlogs();
+        }
         $this->model->readBlog();
+
         $this->_view();
         }
         
     public function aboutusAction(){
+        $this->navItems = ['تعرف علينا'];
         $this->_view();
     }
 
+    public function callusAction(){
+        $this->navItems = ['اتصل بنا '];
+        $this->_view();
+    }
     public function findOne($id){
         return $this->model->findUser($id);
     }
@@ -48,6 +76,7 @@ class IndexController extends AbstractController{
     public function isSaved($blogId,$userId){
         return $this->model->checkSave($blogId,$userId);
     }
+
     
 }
 ?>

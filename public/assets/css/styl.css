@@ -78,7 +78,7 @@ nav {
     transition: 200ms all ease;
   }
   .open {
-    width: 10rem;
+    width: 24rem;
     border: 1px;
     padding: 0.2rem;
     border-radius: 8px;
@@ -118,9 +118,6 @@ main {
   flex-direction: row;
 }
 .aside{
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
   width: 25%;
   background-color: white;
   height: 100vh;
@@ -191,7 +188,7 @@ hr {
   width: 100%;
   margin-bottom: 5%;
 }
-section{
+.section{
   padding-inline: 9%;
   flex-direction: column;
 }
@@ -209,13 +206,13 @@ article {
   width: 65%;
   margin: 1% 10%;
 }
-input[type="submit"] {
+.more {
   border: 1px solid #7690D2;
   background-color: white;
   color: #7690D2;
   cursor: pointer;
 }
-input[type="submit"]:hover {
+.more:hover {
   background-color: #7690D2;
   color: white;
 }
@@ -233,4 +230,18 @@ footer {
   text-align: end;
   background-color: #ffb860;
   padding: 2%;
+}.bar{
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.8px);
+  -webkit-backdrop-filter: blur(8.8px);
+}
+.jomoaa{
+  font-family: "Noto Nastaliq Urdu", serif;
+}
+#form{
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.8px);
+  -webkit-backdrop-filter: blur(8.8px);
 }

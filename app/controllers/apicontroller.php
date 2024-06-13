@@ -4,20 +4,22 @@ namespace yahya\Controllers;
 
 
 class ApiController extends AbstractController {
-
+    protected $likeModel;
+    protected $readModel;
 
     public function __construct(){
         $this->model = new \yahya\Models\Save;
-        
+        $this->likeModel = new \yahya\Models\Like;
+        $this->readModel = new \yahya\Models\Read;
     }
     
     public function likeAction(){
-        $result = $this->model->likedBlog();
+        $result = $this->likeModel->likedBlog();
         if ($result) {
-            $this->model->insertLike();
+            $this->likeModel->insertLike();
         }
         else {
-            $this->model->removeLike();
+            $this->likeModel->removeLike();
         }
         $this->_view();
     }
@@ -33,6 +35,8 @@ class ApiController extends AbstractController {
         }
         $this->_view();
     }
+
+    
 
 }
 ?>

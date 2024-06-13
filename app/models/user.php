@@ -8,7 +8,7 @@ class User extends \yahya\Database\Database{
     public $lastName;
     public $email;
     public $pass;
-    public $profileImg =  FOLDER_PATH ."/public/assets/imgs/imgsmom.jpg";
+    public $profileImg =  "/jomoaa/public/assets/imgs/imgsmom.jpg";
 
     public function signup(){
         if (isset($_POST['signup'])) {
@@ -80,7 +80,7 @@ class User extends \yahya\Database\Database{
 
     public function setProfileImg(){
         $fileName = basename($_FILES["file"]["name"]);
-        $targetFilePath = dirname(dirname(__FILE__),2) . "/public/assets/imgs/" . $fileName;
+        $targetFilePath = "/jomoaa/public/assets/imgs/" . $fileName;
         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
         echo "<br>" . $targetFilePath;
     
@@ -90,7 +90,7 @@ class User extends \yahya\Database\Database{
             if ($_FILES["file"]["error"] == 0) {
                 if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
                     echo "The file ". htmlspecialchars($fileName). " has been uploaded.";
-                    return $this->profileImg = "public/assets/imgs/" . $fileName;
+                    return $this->profileImg = "/jomoaa/public/assets/imgs/" . $fileName;
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
@@ -112,6 +112,16 @@ class User extends \yahya\Database\Database{
     
     }
 
+    public function searchAceuill(){
+        if (isset($_POST['search'])) {
+            $search = $_POST['searchValue'];
+            $sql = "SELECT NOM, PRENOM, IMG, ID_BLOG, ID_USER ,ID_ADMIN ,TITRE ,CATEGORY ,CONTENT ,BLOG_DATE ,ETAT FROM blog INNER JOIN user USING(ID_USER) where etat = 'en cours' and TITRE LIKE '%$search%'";
+            $this->query($sql);
+            $this->execute();
+            return $this->getAll();
+        }
+    }
+
     public function readBlog(){
         if (isset($_POST['read'])) {
             $_SESSION['ID_BLOG'] = $_POST['ID_BLOG'];
@@ -119,5 +129,14 @@ class User extends \yahya\Database\Database{
         }
     }
     
+    public function filter(){
+        if (isset($_POST['navContent'])) {
+            $sql = "SELECT NOM, PRENOM, IMG, ID_BLOG, ID_USER ,ID_ADMIN ,TITRE ,CATEGORY ,CONTENT ,BLOG_DATE ,ETAT FROM blog INNER JOIN user USING(ID_USER) where etat = 'en cours' and CATEGORY = :category";
+            $this->query($sql);
+            $this->bind(':category', $_POST['navContent']);
+            $this->execute();
+            return [$_POST['navContent'],$this->getAll()];
+        }
+    }
 }
 ?>

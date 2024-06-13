@@ -1,6 +1,6 @@
 <?php
 namespace yahya\Models;
-session_start();
+// session_start();
 
 
 class Like extends \yahya\Database\Database{

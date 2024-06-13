@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>الجمعة</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/jomoaa/public/assets/css/styl.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6e2f9a7b88.js" crossorigin="anonymous"></script>
+</head>
+<body>
 <header class="relative">
   <div id="authent" class="absolute flex flex-row justify-center items-center top-5 mr-1 z-10 w-2/12 h-4-12 right-0 font-semibold gap-x-5 text-white">
     <?php
@@ -100,3 +111,25 @@
         <i class="fa-solid fa-plus"></i>
         </button>
     </nav>
+
+    <main class="flex flex-row px-64 gap-36 py-24">
+    <form action="" class="flex flex-col  gap-10 px-10 py-10 w-5/12" >
+        <h1 class="text-3xl self-start">ابقى على تواصل</h1>
+        <p>لاخبارنا بأي اقتراح أو معلومة جديدة سنرد في أقرب وقت, تواصل معنا من خلال المعلومات التالية :</p>
+        <p dir="ltr" class="self-start">  06 02 96 76 32 <i class="fa-solid fa-phone"></i></p>
+        <p dir="ltr" class="self-start">  yahyaboussakla@gmail.com  <i class="fa-regular fa-envelope"></i></p>
+
+       
+    </form>
+    <form action="" class="flex flex-col items-center justify-canter gap-10 px-10 py-10 w-5/12" id="form">
+        <h1 class="text-3xl self-start">أترك رسالة</h1>
+        <input type="text" placeholder="الاسم الكامل" class="bg-transparent rounded text-gray-800 font-semibold w-full border border-orange-300 text-right px-4">
+        <input type="text" placeholder="البريد الالكتروني" class="bg-transparent rounded text-gray-800 font-semibold w-full border border-orange-300 text-right px-4">
+        <textarea name="" id="" placeholder="رسالة" class="bg-transparent rounded text-gray-800 font-semibold w-full border border-orange-300 text-right px-4 h-44"></textarea>
+        <button style="background-color: #ffb860;" onclick="setBlog()" class="w-full text-white font-semibold py-2 px-8 rounded">
+        نشر
+      </button>
+    </form>
+</main>
+</body>
+</html>

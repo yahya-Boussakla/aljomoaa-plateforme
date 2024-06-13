@@ -7,7 +7,7 @@ if (!(isset($_SESSION['USER']))) {
 ?>
 
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -69,14 +69,14 @@ if (!(isset($_SESSION['USER']))) {
         نشر
       </button>
       <button class="text-center text-gray-800 font-semibold border border-black rounded inline-flex items-center">
-      <span id="private" class="h-full px-4 py-2 border-r border-black">
+      <span id="private" class="h-full w-3/12 px-4 py-2 border-r border-black">
         <i class="fa-regular fa-eye"></i>
       </span>
-      <span class="px-16 text-center">
+      <span class=" text-center w-9/12">
         الخصوصية
       </span>
       </button>
-      <button class="bg-transparent font-semibold py-2 px-4 border border-black rounded">    
+      <button onclick="setBrouillan()" class="bg-transparent font-semibold py-2 px-4 border border-black rounded">    
         حفظ في المسودة
       </button>
       <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">كيف أكتب مقال ؟</a>
@@ -85,6 +85,7 @@ if (!(isset($_SESSION['USER']))) {
       <form method="post" action="" id="myForm">
       <div class=" text-right w-full flex flex-row gap-10">
         <input type="hidden" name="blogContent" id="test">
+        <input type="hidden" name="status">
         <select name="category" class="bg-transparent rounded text-gray-800 font-semibold w-4/12 border-b border-orange-300 text-center px-4" >
           <option class="text-center" value="">
             الصنف

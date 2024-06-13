@@ -102,8 +102,29 @@ class Database{
         }
     }
 
+    public function acount(){
+        if (isset($_POST['acount'])) {
+            $_SESSION['STATUS'] = 'profile';
+            header("Location: http://localhost/jomoaa/profile");
+        }
+    }
+
+    public function brouillan(){
+        if (isset($_POST['brouillan'])) {
+            $_SESSION['STATUS'] = 'brouillan';
+            header("Location: http://localhost/jomoaa/profile");
+        }
+    }
+
+    public function saves(){
+        if (isset($_POST['saves'])) {
+            $_SESSION['STATUS'] = 'saves';
+            header("Location: http://localhost/jomoaa/profile");
+        }
+    }
+
     public function getBlogs(){
-        $sql = "SELECT ID_BLOG, ID_USER ,ID_ADMIN ,TITRE ,CATEGORY 	,CONTENT ,BLOG_DATE ,ETAT FROM blog";
+        $sql = "SELECT NOM, PRENOM, IMG, ID_BLOG, ID_USER ,ID_ADMIN ,TITRE ,CATEGORY ,CONTENT ,BLOG_DATE ,ETAT FROM blog INNER JOIN user USING(ID_USER) where etat = 'en cours'";
         $this->query($sql);
         $this->execute();
         $blogs = $this->getAll();
@@ -112,13 +133,36 @@ class Database{
     }
 
     public function findUser($id){
-        $sql = "select * from user where ID_USER = :id";
+        $sql = "SELECT COUNT(ID_BLOG),user.*,ifnull(MAX(BLOG_DATE),'لا يوجد') as 'last blog' FROM blog INNER JOIN user USING(ID_USER) WHERE ID_USER = :id";
         $this->query($sql);
         $this->bind(":id" , $id);
         $this->execute();
         $result = $this->get();
         return $result;
     }
+
+    
+    public function findUserAcount($id){
+        $sql = "SELECT COUNT(ID_BLOG),user.*,ifnull(MAX(BLOG_DATE),'لا يوجد') as 'last blog' FROM blog INNER JOIN user USING(ID_USER) WHERE ID_USER = :id and etat = 'en cours'";
+        $this->query($sql);
+        $this->bind(":id" , $id);
+        $this->execute();
+        $result = $this->get();
+        return $result;
+    }
+
+    
+    public function findUserDraft($id){
+        $sql = "SELECT COUNT(ID_BLOG),user.*,ifnull(MAX(BLOG_DATE),'لا يوجد') as 'last blog' FROM blog INNER JOIN user USING(ID_USER) WHERE ID_USER = :id and etat = 'brouillan'";
+        $this->query($sql);
+        $this->bind(":id" , $id);
+        $this->execute();
+        $result = $this->get();
+        return $result;
+    }
+    
+
+    
 
     public function getMignature($blog){
 
@@ -199,6 +243,14 @@ class Database{
         else {
             return false;
         }
+    }
+
+    public function readCount($blogId){
+        $sql = "SELECT COUNT(*) FROM `lire` WHERE ID_BLOG = :blogId";
+        $this->query($sql);
+        $this->bind(':blogId', $blogId);
+        $this->execute();
+        return $this->get()['COUNT(*)'];
     }
 }
 ?>
