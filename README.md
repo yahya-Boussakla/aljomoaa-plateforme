@@ -1,4 +1,4 @@
-# Aljomoaa - Arabic Blog Platform
+# Aljomoaa 
 
 ## Description
 Aljomoaa is a personal blog website designed to promote Arabic content. Users can post articles, comment on them, and interact with other blog posts. The platform offers a clean and user-friendly experience for both bloggers and readers.
